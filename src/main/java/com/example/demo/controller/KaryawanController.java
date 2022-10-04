@@ -28,6 +28,7 @@ public class KaryawanController {
 
 	@Autowired
 	KaryawanService karyawanService;
+	//tes
 
 	@GetMapping("/allKaryawan")
 	public ResponseEntity<List<TblKaryawan>> searchKaryawan() {

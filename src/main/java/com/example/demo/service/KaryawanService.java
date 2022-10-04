@@ -60,7 +60,7 @@ public class KaryawanService {
 				if (!StringUtils.isEmpty(updateReq.getNamaKrw())) {
 					ent.setNamaKrw(updateReq.getNamaKrw());
 				}
-				if (updateReq.getDob()!=null) {
+				if (updateReq.getDob() != null) {
 					ent.setDob(updateReq.getDob());
 				}
 				if (!StringUtils.isEmpty(updateReq.getEmail())) {
