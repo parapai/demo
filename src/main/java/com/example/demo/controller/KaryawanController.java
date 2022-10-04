@@ -25,52 +25,44 @@ import lombok.extern.log4j.Log4j2;
 @RestController
 @RequestMapping(value = "api")
 public class KaryawanController {
-	
+
 	@Autowired
 	KaryawanService karyawanService;
-	
 
 	@GetMapping("/allKaryawan")
-	public ResponseEntity <List<TblKaryawan>> searchKaryawan(){
-		
+	public ResponseEntity<List<TblKaryawan>> searchKaryawan() {
+
 		List<TblKaryawan> listData = karyawanService.searchKaryawan();
 
-
-		
 		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON).body(listData);
 	}
-	
+
 	@PostMapping("/addKaryawan")
-	public ResponseEntity <TblKaryawan> addKaryawan(@RequestBody AddKaryawanRequest addReq){
-		
+	public ResponseEntity<TblKaryawan> addKaryawan(@RequestBody AddKaryawanRequest addReq) {
+
 		TblKaryawan insertData = karyawanService.addKaryawan(addReq);
 
-
-		
 		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON).body(insertData);
 	}
-	
+
 	@PostMapping("/updateKaryawan/{nik}")
-	public ResponseEntity <TblKaryawan> addKaryawan(@RequestBody UpdateKaryawanRequest updateReq, @PathVariable String nik){
-		
+	public ResponseEntity<TblKaryawan> addKaryawan(@RequestBody UpdateKaryawanRequest updateReq,
+			@PathVariable String nik) {
+
 		TblKaryawan insertData = karyawanService.updateKaryawan(updateReq, nik);
 
-
-		
 		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON).body(insertData);
 	}
-	
+
 	@GetMapping("/deleteKaryawan/{nik}")
-	public ResponseEntity <TblKaryawan> deleteKaryawan(@PathVariable String nik){
-		
-		if(StringUtils.isEmpty(nik)) {
+	public ResponseEntity<TblKaryawan> deleteKaryawan(@PathVariable String nik) {
+
+		if (StringUtils.isEmpty(nik)) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).contentType(MediaType.APPLICATION_JSON).body(null);
 		}
-		
+
 		TblKaryawan deleteData = karyawanService.deleteKaryawan(nik);
 
-
-		
 		return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON).body(deleteData);
 	}
 }
